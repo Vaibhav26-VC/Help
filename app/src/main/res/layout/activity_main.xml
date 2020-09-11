@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/background"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/drawerlayout">
 
 
 
@@ -30,9 +31,10 @@
                     <androidx.appcompat.widget.Toolbar
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
+                        android:layout_height="wrap_content"
                         android:background="@color/colorPrimary"
                         android:elevation="4dp"
+                        android:gravity="start"
                         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
@@ -237,19 +239,16 @@
                     </androidx.cardview.widget.CardView>
 
                 </GridLayout>
-
             </LinearLayout>
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:onClick="logout"
-        android:text="logout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-        </RelativeLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/navigation"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:itemTextColor="#f5f2d0"
+        android:background="#80c9"
+        app:menu="@menu/drawer_menu"/>
+
+        </androidx.drawerlayout.widget.DrawerLayout>
