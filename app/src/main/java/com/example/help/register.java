@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class register extends AppCompatActivity {
     TextView loginhere;
@@ -25,12 +27,14 @@ public class register extends AppCompatActivity {
     Button register;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
+        databaseReference= FirebaseDatabase.getInstance().getReference("loginDatabase");
         fullname=findViewById(R.id.fullname);
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
@@ -86,6 +90,10 @@ public class register extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Enter Valid Email address",Toast.LENGTH_LONG).show();
                 }
                 progressBar.setVisibility(View.VISIBLE);
+                //database
+                String id =databaseReference.push().getKey();
+                loginDatabase logindatabase= new loginDatabase(id, name,no,c);
+                databaseReference.child(id).setValue(logindatabase);
 
                 //register tha users in firebase
 

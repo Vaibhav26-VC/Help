@@ -28,6 +28,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         setUpToolbar();
 
+        //navigation
         navigation=findViewById(R.id.navigation);
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -71,6 +72,7 @@ public class MainActivity extends Activity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+    //navigation
     private  void  setUpToolbar(){
         drawerlayout = findViewById(R.id.drawerlayout);
         toolbar=findViewById(R.id.toolbar);
