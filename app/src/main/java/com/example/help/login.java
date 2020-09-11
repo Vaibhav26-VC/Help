@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class login extends AppCompatActivity {
     TextView new_account;
@@ -25,11 +27,14 @@ public class login extends AppCompatActivity {
     Button login;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+        databaseReference= FirebaseDatabase.getInstance().getReference("docterDatabase");
 
         new_account=findViewById(R.id.new_account);
         email=findViewById(R.id.email);
